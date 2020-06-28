@@ -10,7 +10,7 @@ rotate 1 steps to the right: [7,1,2,3,4,5,6]
 rotate 2 steps to the right: [6,7,1,2,3,4,5]
 rotate 3 steps to the right: [5,6,7,1,2,3,4]
 '''
-class Solution(object):
+class Solution():
     def rotate(self, nums, k):
         """
         :type nums: List[int]
@@ -29,4 +29,9 @@ class Solution(object):
                 
                 if k == 0:
                     break
-        
+        return nums
+
+sol = Solution()
+result = sol.rotate([4,2,6,7,8,9,4], 3)
+
+print(result)
