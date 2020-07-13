@@ -2,17 +2,17 @@ def solution(A):
 
     # O(N log N or O(N) time)
 
-    # B = sorted(A)
+    B = sorted(A)
     
 
-    # midpoint = len(B) // 2
+    midpoint = len(B) // 2
 
-    # for i in range(len(A)-1):
+    for i in range(len(A)-1):
 
-    #     if B[midpoint] == A[i] and (B[i-1] | B[i+1]) == A[i]:
-    #         return i
+        if B[midpoint] == A[i] and (B[i-1] | B[i+1]) == A[i]:
+            return i
     
-    # return -1
+    return -1
 
     consecutive_size = 0
     candidate = 0
