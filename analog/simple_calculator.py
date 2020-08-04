@@ -1,23 +1,43 @@
 def evaluate(expression):
     final_result = 0
-    action = '+'
-    pointer = 0
+    stack = []
+    current_operand = 0
+    num = 1
+   
 
-    for index in range(0, len(expression)):
-        if index == pointer:
-            item = expression[pointer]
-        if item in ('+', '-'):
-            action = item
-        elif item.isdigit():
-            if action == '-':
-                final_result -= int(item)
-            else:
-                final_result += int(item)
+    for index in range(len(expression)):
+        item = expression[index]
+        if item.isdigit():
+            current_operand = current_operand*10 + int(item)
+            continue
+        stack.append(num * current_operand)
+        current_operand = 0
+        if item == '-':
+            num = -1
+        elif item == '+':
+            num = 1
         elif item == '(':
-            pointer += 1
+            if num == 1:
+                stack.append('+')
+                print(stack)
+            else:
+                stack.append('-')
+            num = 1
         elif item == ')':
-            return final_result
+            tmp_num = 0
+            while stack[-1] != '+' and stack[-1] != '-':
+                tmp_num += stack.pop()
+            if stack[-1] == '-':
+                tmp_num = -tmp_num
+            stack.pop()
+            stack.append(tmp_num)
     
+    if current_operand != 0:
+        stack.append(num * current_operand)
+    while stack:
+        final_result += stack.pop()
+
+
     return final_result
 
 
