@@ -8,7 +8,7 @@ def evaluate(expression):
     for index in range(len(expression)):
         item = expression[index]
         if item.isdigit():
-            current_operand = current_operand*10 + int(item)
+            current_operand = int(item)
             continue
         stack.append(num * current_operand)
         current_operand = 0
@@ -19,7 +19,6 @@ def evaluate(expression):
         elif item == '(':
             if num == 1:
                 stack.append('+')
-                print(stack)
             else:
                 stack.append('-')
             num = 1
